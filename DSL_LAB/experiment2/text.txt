@@ -1,0 +1,15 @@
+Move disk 1 to 2
+Move disk 1 to 3
+Move disk 2 to 3
+Move disk 1 to 2
+Move disk 3 to 1
+Move disk 3 to 2
+Move disk 1 to 2
+Move disk 1 to 3
+Move disk 2 to 3
+Move disk 2 to 1
+Move disk 3 to 1
+Move disk 2 to 3
+Move disk 1 to 2
+Move disk 1 to 3
+Move disk 2 to 3
