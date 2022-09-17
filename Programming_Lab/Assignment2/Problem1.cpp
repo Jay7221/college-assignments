@@ -1,4 +1,4 @@
-#include<bits/stdc++.h>
+#include<iostream>
 using namespace std;
 class Film{
 	private:
@@ -10,6 +10,9 @@ class Film{
 		Film(){
 			language = "Hindi";
 			duration = 3;
+		}
+		~Film(){
+			cout << "Film " << name << " closing " << endl;
 		}
 		void get_name(){
 			cout << "Enter the name of the film:" << endl;

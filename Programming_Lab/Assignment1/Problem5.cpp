@@ -1,5 +1,4 @@
 #include<iostream>
-#include<string.h>
 using namespace std;
 bool is_vowel(char ch){
 	char vowels[] = {'a', 'e', 'i', 'o', 'u'};
@@ -12,11 +11,7 @@ bool is_vowel(char ch){
 	return ans;
 }
 int main(){
-	vector<string> sentence;
-	string s;
-	while(cin >> s){
-		
-	}
+	string s = "CPP is easy and great and Python is also great";
 	int number_vowels = 0, number_consonants = 0;
 	for(auto ch : s){
 		if(is_vowel(ch)){
