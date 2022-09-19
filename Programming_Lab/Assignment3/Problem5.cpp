@@ -67,7 +67,10 @@ class Audi : public Car, public Racing{
 		}
 };
 int main(){
-	Audi a("My Car");
+	string s;
+	cout << "Enter the name of the car" << endl;
+	cin >> s;
+	Audi a(s);
 	a.display();
 	return 0;
 }

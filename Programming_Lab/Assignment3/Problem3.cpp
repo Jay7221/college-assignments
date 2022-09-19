@@ -95,7 +95,7 @@ class Casual : public Typist {
 		}
 };
 int main(){
-	Casual c(43, 34, "Hello Moto");
+	Casual c(43, 34, "The Great");
 	cout << c.get_codename() << endl;
 	return 0;
 }
