@@ -1,7 +1,9 @@
 #include<iostream>
 using namespace std;
+FILE *fp = fopen("text.txt", "w");
 void move(int tower1, int tower2){
 	cout << "Move disk from tower " << tower1 << " to " << tower2 << endl;
+	fprintf(fp, "Move disk from tower %d to tower %d \n", tower1, tower2);
 }
 void towerOfHanoi(int n, int tower1, int tower2, int tower3){
 	// we wish to move all disks from tower1 to tower2 using tower3 as mediator
@@ -21,5 +23,6 @@ int main(int argv, char* argc[]){
 		cout << endl;
 	}
 	towerOfHanoi(n, 1, 2, 3);
+	fclose(fp);
 	return 0;
 }
