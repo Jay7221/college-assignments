@@ -1,58 +1,95 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class Stack{
-	private:
-		int *arr;
-		int n;
-		int l, r;
-	public:
-		Stack(int n):n(n){
-			l = -1, r = -1;
-			arr = new int(n);
-		}
-		Stack(){
-			l = -1, r = -1;
-			n = 0;
-		}
-		void push(int data){
-			if(r == n - 1){
-				cout << "STACK OVERFLOW" << endl;
-				return ;
-			}
-			if(r == -1){
-				l = 0;
-			}
-			r = r + 1;
-			arr[r] = data;
-		}
-		int pop(){
-			if(l == -1){
-				cout << "EMPTY STACK" << endl;
-				return -1;
-			}
-			int res = arr[r];
-			r = r - 1;
-			if(l > r){
-				l = r = -1;
-			}
-			return res;
-		}
 
+class TwoStack{
+    private:
+        int MAX, cur1, cur2;
+        int *arr;
+    public:
+        TwoStack(int size){
+            MAX = size;
+            arr = new int(MAX);
+            cur1 = 0;
+            cur2 = MAX - 1;
+        }
+        void push1(int x){
+            if(cur1 > cur2){
+                cout << "STACK OVERFLOW" << endl;
+                return ;
+            }
+            arr[cur1] = x;
+            cur1 = cur1 + 1;
+        }
+        void push2(int x){
+            if(cur1 > cur2){
+                cout << "STACK OVERFLOW" << endl;
+                return ;
+            }
+            arr[cur2] = x;
+            cur2 = cur2 - 1;
+        }
+        int pop1(){
+            if(cur1 == 0){
+                cout << "EMPTY STACK" << endl;
+                return -1;
+            }
+            cur1 = cur1 - 1;
+            return arr[cur1];
+        }
+        int pop2(){
+            if(cur2 == MAX - 1){
+                cout << "EMPTY STACK" << endl;
+                return -1;
+            }
+            cur2 = cur2 + 1;
+            return arr[cur2];
+        }
 };
-int main(){
-	int n;
-	cout << "Enter the number of elements in the stack : ";
-	cin >> n;
-	Stack s(n);
-	for(int i = 0; i < n; ++i){
-		int k;
-		cin >> k;
-		s.push(k);
-	}
-	cout << "The entered elements are : ";
-	for(int i = 0; i < n; ++i){
-		cout << s.pop() << ' ' ;
-	}
-	cout << endl;
-	return 0;
+void display(){
+    cout << "================================================="<< endl;
+    cout << "1. PUSH ELEMENT" << endl;
+    cout << "2. POP last odd element"<< endl;
+    cout << "3. POP last even element"<< endl;
+    cout << "4. EXIT"<< endl;
+}
+bool input(TwoStack &st){
+    int k;
+    cin >> k;
+    bool flag = true;
+    if(k == 1){
+        cout << "Enter an element : ";
+        int x;
+        cin >> x;
+        if(x % 2){
+            st.push2(x);
+        }else{
+            st.push1(x);
+        }
+    }else if(k == 2){
+        int x = st.pop2();
+        if(x != -1){
+            cout << "The last odd element is : "<< x << endl;
+        }
+    }else if(k == 3){
+        int x = st.pop1();
+        if(x != -1){
+            cout << "The last even element is : "<< x << endl;
+        }
+    }else{
+        flag = false;
+    }
+    return flag;
+}
+int main()
+{
+    int n;
+    cout << "Enter the size of array : ";
+    cin >> n;
+    bool flag = true;
+    TwoStack st(n);
+    while(flag){
+        display();
+        flag = input(st);
+    }
+    return 0;
 }
