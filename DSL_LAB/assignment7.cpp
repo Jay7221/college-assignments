@@ -43,7 +43,7 @@ int main(){
 	CircularQueue q(10);
 	for(int i = 0; i < 10; ++i)
 		q.enqueue(i);
-	for(int i = 0; i < 100; ++i)
+	for(int i = 0; i < 12; ++i)
 		cout << q.dequeue() << ' ' ;
 	cout << endl;
 	return 0;

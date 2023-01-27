@@ -34,7 +34,7 @@ Node* reverseLinkedList0(Node *head){
 }
 
 Node* reverseLinkedList(Node *head, Node* prev = NULL){
-	cout << (head -> data) << endl;
+	// cout << (head -> data) << endl;
 	if(head -> link == NULL){
 		head -> link = prev;
 		return head;
