@@ -3,12 +3,85 @@ import javax.swing.event.*;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class NoteApp extends JFrame {
-    private JList<File> noteList;
-    private DefaultListModel<File> listModel;
+    private JList<String> noteList;
+    private DefaultListModel<String> listModel;
     private JTextArea editor;
     private JMenuBar menuBar;
+
+    static final String DB_URL = "jdbc:mysql://localhost:3306/programming_lab_2";
+    static final String USERNAME = "root";
+    static final String PASSWORD = "Jay@1234";
+    Connection conn = null;
+    private void connect(){
+        if(conn == null){
+            try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+
+                    System.out.println("Connecting to database ...");
+
+                    conn = DriverManager.getConnection(DB_URL, USERNAME, PASSWORD);
+
+                    System.out.println("Successfully connected!");
+            }
+            catch(Exception e) {
+                    System.out.println(e);
+            }
+
+        }
+    }
+
+    void putAll(){
+        connect();
+        try{
+            String sql = "SELECT name FROM Notes;";
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(sql);
+            while(rs.next()){
+                listModel.addElement(rs.getString("name"));
+            }
+    
+        }catch(Exception e){
+            System.out.println(e);
+        }        
+    }
+    private void removeNote(String noteName){
+        try{
+            connect();
+            String sql = "DELETE FROM Notes WHERE name='" + noteName + "';";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    private void setNote(String noteName, String noteData){
+        try{
+            connect();
+            String sql = "UPDATE Notes SET data='" + noteData + "' WHERE name='" + noteName + "';";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
+    private void createNewNote(String note){
+        try{
+            connect();
+            String sql = "INSERT INTO Notes VALUES ('" + note + "' , ' ');";
+            Statement stmt = conn.createStatement();
+            stmt.executeUpdate(sql);
+        }catch(Exception e){
+            System.out.println(e);
+        }
+    }
 
     public NoteApp() {
         super("Note Taking Application");
@@ -20,8 +93,8 @@ public class NoteApp extends JFrame {
         notesDir.mkdir();
 
         // Create note list and add it to the UI
-        listModel = new DefaultListModel<File>();
-        noteList = new JList<File>(listModel);
+        listModel = new DefaultListModel<String>();
+        noteList = new JList<String>(listModel);
         noteList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         noteList.addListSelectionListener(new NoteSelectionListener());
         JScrollPane noteScrollPane = new JScrollPane(noteList);
@@ -56,32 +129,32 @@ public class NoteApp extends JFrame {
         deletNoteButton.setFocusable(false);
         menuBar.add(deletNoteButton);
 
-        // Populate note list with existing notes
-        for (File file : notesDir.listFiles()) {
-            if (file.isFile() && file.getName().endsWith(".note")) {
-                listModel.addElement(file);
-            }
-        }
+        putAll();
 
         // Show UI
         setVisible(true);
     }
 
     private class NoteSelectionListener implements ListSelectionListener {
+
         public void valueChanged(ListSelectionEvent event) {
             if (!event.getValueIsAdjusting()) {
-                File selectedNote = noteList.getSelectedValue();
+                String selectedNote = noteList.getSelectedValue();
+                connect();
                 if (selectedNote != null) {
                     try {
-                        BufferedReader reader = new BufferedReader(new FileReader(selectedNote));
+
                         StringBuilder text = new StringBuilder();
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            text.append(line + "\n");
+                        Statement stmt = conn.createStatement();
+                        String sql = "SELECT data FROM Notes WHERE name='" + selectedNote + "'";
+                        ResultSet rs = stmt.executeQuery(sql);
+                        if(rs.next()){
+                            editor.setText(rs.getString("data"));
+                        }else{
+                            editor.setText("");
                         }
-                        reader.close();
-                        editor.setText(text.toString());
-                    } catch (IOException e) {
+                        
+                    } catch (Exception e) {
                         JOptionPane.showMessageDialog(NoteApp.this, "Error loading note: " + e.getMessage());
                     }
                 } else {
@@ -95,11 +168,11 @@ public class NoteApp extends JFrame {
         public void actionPerformed(ActionEvent event) {
             String name = JOptionPane.showInputDialog(NoteApp.this, "Enter name for new note:");
             if (name != null && !name.trim().isEmpty()) {
-                File newNote = new File("notes/" + name.trim() + ".note");
+                String newNote = name;
                 try {
-                    newNote.createNewFile();
+                    createNewNote(newNote);
                     listModel.addElement(newNote);
-                } catch (IOException e) {
+                } catch (Exception e) {
                     JOptionPane.showMessageDialog(NoteApp.this, "Error creating note: " + e.getMessage());
                 }
             }
@@ -109,13 +182,9 @@ public class NoteApp extends JFrame {
     private class SaveNoteListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             try{
-                File file = noteList.getSelectedValue();
-                if(file != null){
-                    BufferedWriter writer = new BufferedWriter(new FileWriter(file));
-                    String text = editor.getText();
-                    writer.write(text);
-                    writer.flush();
-                    writer.close();    
+                String noteName = noteList.getSelectedValue();
+                if(noteName != null){
+                    setNote(noteName, editor.getText());
                 }
             }catch(Exception exception){
                 System.out.println(exception);
@@ -126,10 +195,10 @@ public class NoteApp extends JFrame {
     private class DeleteNoteListener implements ActionListener{
         public void actionPerformed(ActionEvent event){
             try{
-                File file = noteList.getSelectedValue();
-                if(file != null){
-                    noteList.remove(noteList.getSelectedIndex());
-                    file.delete();
+                String noteName = noteList.getSelectedValue();
+                listModel.removeElement(noteList.getSelectedValue());
+                if(noteName != null){
+                    removeNote(noteName);
                 }
             }catch(Exception exception){
                 System.out.println(exception);
