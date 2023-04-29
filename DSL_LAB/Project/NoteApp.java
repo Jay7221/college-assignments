@@ -143,8 +143,6 @@ public class NoteApp extends JFrame {
                 connect();
                 if (selectedNote != null) {
                     try {
-
-                        StringBuilder text = new StringBuilder();
                         Statement stmt = conn.createStatement();
                         String sql = "SELECT data FROM Notes WHERE name='" + selectedNote + "'";
                         ResultSet rs = stmt.executeQuery(sql);
