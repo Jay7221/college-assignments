@@ -30,6 +30,7 @@ public class NoteApp extends JFrame {
 
         // Create editor and add it to the UI
         editor = new JTextArea();
+        editor.setFont(new Font("Comic Sans", Font.PLAIN, 30));
         JScrollPane editorScrollPane = new JScrollPane(editor);
         add(editorScrollPane, BorderLayout.CENTER);
 
@@ -127,8 +128,13 @@ public class NoteApp extends JFrame {
         public void actionPerformed(ActionEvent event){
             try{
                 File file = noteList.getSelectedValue();
+                int option = JOptionPane.showConfirmDialog(NoteApp.this, "Are you sure you want to delete this note ?"
+                 + file.getName(), "delete", JOptionPane.YES_NO_OPTION);
+                if(option != 0){
+                    return;
+                }
                 if(file != null){
-                    noteList.remove(noteList.getSelectedIndex());
+                    listModel.removeElement(file);
                     file.delete();
                 }
             }catch(Exception exception){

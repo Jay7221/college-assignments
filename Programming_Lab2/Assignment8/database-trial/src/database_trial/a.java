@@ -1,4 +1,4 @@
-package database_trial;
+//package database_trial;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -10,7 +10,7 @@ public class a {
 		Connection conn = null;
 		Statement stmt = null;
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+  		Class.forName("com.mysql.cj.jdbc.Driver");
 			
 			System.out.println("Connecting to database ...");
 			
