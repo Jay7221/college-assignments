@@ -1,7 +1,10 @@
 #include <iostream>
 #include <vector>
+#include<map>
 
 using namespace std;
+
+map<int, int> num_op;
 
 vector<vector<int>> operator+ (vector<vector<int>> a, vector<vector<int>> b){
     int n = a.size();
@@ -40,6 +43,9 @@ ostream& operator<< (ostream& out, vector<vector<int>> &mat){
 vector<vector<int>> operator*(const vector<vector<int>>& A, const vector<vector<int>>& B) {
     int n = A.size();
 
+    // Increment the number of multiplcations of two n X n matrices
+    ++num_op[n];
+
     // Base case: If the matrices are 1x1, just multiply them
     if (n == 1) {
         vector<vector<int>> C(1, vector<int>(1, 0));
@@ -75,15 +81,15 @@ vector<vector<int>> operator*(const vector<vector<int>>& A, const vector<vector<
     }
 
     if(half > 1){
-        cout << "A11 : " << '\n' << A11 << '\n';
-        cout << "A12 : " << '\n' << A12 << '\n';
-        cout << "A21 : " << '\n' << A21 << '\n';
-        cout << "A22 : " << '\n' << A22 << '\n';
+        cerr << "A11 : " << '\n' << A11 << '\n';
+        cerr << "A12 : " << '\n' << A12 << '\n';
+        cerr << "A21 : " << '\n' << A21 << '\n';
+        cerr << "A22 : " << '\n' << A22 << '\n';
 
-        cout << "B11 : " << '\n' << B11 << '\n';
-        cout << "B12 : " << '\n' << B12 << '\n';
-        cout << "B21 : " << '\n' << B21 << '\n';
-        cout << "B22 : " << '\n' << B22 << '\n';
+        cerr << "B11 : " << '\n' << B11 << '\n';
+        cerr << "B12 : " << '\n' << B12 << '\n';
+        cerr << "B21 : " << '\n' << B21 << '\n';
+        cerr << "B22 : " << '\n' << B22 << '\n';
     }
 
     // Compute intermediate matrices M1, M2, M3, M4, M5, M6, M7
@@ -96,13 +102,13 @@ vector<vector<int>> operator*(const vector<vector<int>>& A, const vector<vector<
     vector<vector<int>> M7 = (A12 - A22) * (B21 + B22);
 
     if(half > 1){
-        cout << "M1 : " << '\n' << M1 << '\n';
-        cout << "M2 : " << '\n' << M2 << '\n';
-        cout << "M3 : " << '\n' << M3 << '\n';
-        cout << "M4 : " << '\n' << M4 << '\n';
-        cout << "M5 : " << '\n' << M5 << '\n';
-        cout << "M6 : " << '\n' << M6 << '\n';
-        cout << "M7 : " << '\n' << M7 << '\n';
+        cerr << "M1 : " << '\n' << M1 << '\n';
+        cerr << "M2 : " << '\n' << M2 << '\n';
+        cerr << "M3 : " << '\n' << M3 << '\n';
+        cerr << "M4 : " << '\n' << M4 << '\n';
+        cerr << "M5 : " << '\n' << M5 << '\n';
+        cerr << "M6 : " << '\n' << M6 << '\n';
+        cerr << "M7 : " << '\n' << M7 << '\n';
     }
 
     // Compute the four quadrants of the result matrix C
@@ -123,10 +129,10 @@ vector<vector<int>> operator*(const vector<vector<int>>& A, const vector<vector<
         }
     }
     if(half > 1){
-        cout << "C11 : " << '\n' << C11 << '\n';
-        cout << "C12 : " << '\n' << C12 << '\n';
-        cout << "C21 : " << '\n' << C21 << '\n';
-        cout << "C22 : " << '\n' << C22 << '\n';
+        cerr << "C11 : " << '\n' << C11 << '\n';
+        cerr << "C12 : " << '\n' << C12 << '\n';
+        cerr << "C21 : " << '\n' << C21 << '\n';
+        cerr << "C22 : " << '\n' << C22 << '\n';
     }
 
     return C;
@@ -135,7 +141,7 @@ vector<vector<int>> operator*(const vector<vector<int>>& A, const vector<vector<
 
 int main() {
     int n;
-    cout << "Enter the size of the matrices: ";
+    cerr << "Enter the size of the matrices: ";
     cin >> n;
     int N = 1;
     while(N < n){
@@ -145,23 +151,23 @@ int main() {
     vector<vector<int>> A(N, vector<int>(N));
     vector<vector<int>> B(N, vector<int>(N));
 
-    cout << "Enter the elements of matrix A:" << endl;
+    cerr << "Enter the elements of matrix A:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cin >> A[i][j];
         }
     }
 
-    cout << "Enter the elements of matrix B:" << endl;
+    cerr << "Enter the elements of matrix B:" << endl;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             cin >> B[i][j];
         }
     }
 
-    cout << "Matrix A:" << '\n' << A;
+    cerr << "Matrix A:" << '\n' << A;
 
-    cout << "Matrix B:" << '\n' << B;
+    cerr << "Matrix B:" << '\n' << B;
 
     vector<vector<int>> C = A * B;
     C.resize(n);
@@ -169,7 +175,14 @@ int main() {
         v.resize(n);
     }
 
-    cout << "Resultant Matrix C:" << '\n' << C;
+    cerr << "Resultant Matrix C:" << '\n';
+    cout << C;
+
+    for(auto [n, f] : num_op){
+        if(f > 0){
+            cerr << "Number of operations of " << n << " X " << n << " matrices is " << " : " << f << '\n';
+        }
+    }
 
     return 0;
 }

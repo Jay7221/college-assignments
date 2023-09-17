@@ -2,63 +2,60 @@
 #include<vector>
 #include<algorithm>
 using namespace std;
-bool find(vector<int> &a, vector<int> &b, int target){
-    sort(a.begin(), a.end());
-    sort(b.begin(), b.end());
-    int n = a.size(), m = b.size();
-    int l = 0, r = m - 1;
-    while((l < n) && (r >= 0)){
-        if(a[l] + b[r] == target){
-            return true;
-        }
-        if(a[l] + b[r] < target){
-            ++l;
-        }
-        else{
-            --r;
-        }
+template<typename T_container, typename T = typename enable_if<!is_same<T_container, string>::value, typename T_container::value_type>::type> ostream& operator<<(ostream &os, const T_container &v) { os << '{'; string sep; for (const T &x : v) os << sep << x, sep = ", "; return os << '}'; }
+void counting_sort(vector<int> &a, vector<int> &val){
+    int n = a.size();
+    vector<int> count(n);
+    for(int i = 0; i < n; ++i){
+        ++count[val[i]];
     }
-    l = 0, r = n - 1;
-    while((l < m) && (r >= 0)){
-        if(b[l] + a[r] == target){
-            return true;
-        }
-        if(b[l] + a[r] < target){
-            ++l;
-        }
-        else{
-            --r;
-        }
+    for(int i = 1; i <= n; ++i){
+        count[i] += count[i - 1];
     }
-    return false;
+    vector<int> prev = a;
+    for(int i = n - 1; i >= 0; --i){
+        int ind = count[val[i]];
+        --count[val[i]];
+        --ind;
+        a[ind] = prev[i];
+    }
+}
+void special_sort(vector<int> &a){
+    int n = a.size();
+
+    vector<int> y(n);
+    for(int i = 0; i < n; ++i){
+        y[i] = a[i] % n;
+    }
+    counting_sort(a, y);
+
+    cerr << "Array A after sorting using y : " << a << '\n';
+
+    vector<int> x(n);
+    for(int i = 0; i < n; ++i){
+        x[i] = a[i] / n;
+    }
+    counting_sort(a, x);
+
+    cerr << "Array A after sorting using x : " << a << '\n';
 }
 int main(){
-    int n, m;
+    int n;
 
-    cout << "Enter the size of array A : " ;
+    cerr << "Enter the size of array A : "  << '\n';
     cin >> n;
     vector<int> a(n);
-    cout << "Enter the elements of the array : ";
+    cerr << "Enter the elements of the array : " << '\n';
     for(int i = 0; i < n; ++i){
         cin >> a[i];
     }
 
-    cout << "Enter the size of array B : " ;
-    cin >> m;
-    vector<int> b(m);
-    cout << "Enter the elements of the array : ";
-    for(int i = 0; i < m; ++i){
-        cin >> b[i];
+    special_sort(a);
+    cerr << "The elements of sorted array A are : "  << '\n';
+    for(int elem : a){
+        cout << elem << ' ';
     }
+    cout << '\n';
 
-    int k;
-    cout << "Enter the target k : ";
-    cin >> k;
-    if(find(a, b, k)){
-        cout << "There exists a and b in A such that a + b = k" << endl;
-    }
-    else{
-        cout << "There exists no a and b in A such that a + b = k" << endl;
-    }
     return 0;
 }
