@@ -1,0 +1,157 @@
+/* Basic styling for the header and navigation */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Styling for featured books and book grid */
+#featured-books,
+#all-books {
+    margin: 20px;
+}
+
+.book {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+}
+
+.book img {
+    max-width: 100px;
+}
+
+/* Styling for the shopping cart */
+#cart {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Mobile-first styles */
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px; /* Adjust font size for mobile */
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+nav li {
+    display: block; /* Change to block for mobile */
+    margin-bottom: 10px; /* Add spacing between items */
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px; /* Adjust font size for mobile */
+}
+
+.show{
+    display: none;
+}
+
+/* Hamburger menu styles */
+#menu-icon {
+    cursor: pointer;
+    margin: 1rem;
+}
+.bar{
+    width: 20px;
+    height: 2px;
+    background-color: white;
+    margin: 0.2rem;
+}
+
+/* Featured and all books styles */
+#featured-books,
+#all-books {
+    margin: 20px;
+}
+
+.book {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    width: 45%; /* Adjust the width for mobile */
+    padding: 10px;
+}
+
+.book img {
+    max-width: 100%;
+}
+
+.add-button{
+    color: white;
+    font-size: 20px;
+    background-color: blue;
+    padding: 7px;
+    border-radius: 20px;
+}
+
+/* Shopping cart styles */
+#cart {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Media query for screens 768px and above (tablets and desktops) */
+@media screen and (min-width: 768px) {
+    header h1 {
+        font-size: 36px; /* Increase font size for larger screens */
+    }
+
+    nav li {
+        display: inline;
+        margin-bottom: 0; /* Remove spacing between items */
+    }
+
+    nav a {
+        font-size: 18px; /* Increase font size for larger screens */
+    }
+
+    /* Hide the hamburger menu icon on larger screens */
+    #menu-icon {
+        display: none;
+    }
+
+    .show{
+        display: inline;
+    }
+    
+    /* Adjust the layout of books for larger screens */
+    .book {
+        width: 30%; /* Adjust the width for larger screens */
+    }
+}

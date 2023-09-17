@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fictional Bookstore</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Fictional Bookstore</h1>
+      <div id="menu-icon" onclick="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <nav class="show">
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#books">Books</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <!-- Add this inside the header -->
+    </header>
+
+    <section id="featured-books">
+      <!-- Featured books will be displayed here -->
+    </section>
+
+    <section id="all-books">
+      <!-- All available books will be displayed here -->
+    </section>
+
+    <div id="cart">
+      <p>Cart: <span id="cart-count">0</span> items</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>

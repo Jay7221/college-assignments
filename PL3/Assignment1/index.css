@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Courier New", Courier, monospace;
+}
+.sidebar {
+  background-color: rgb(201, 199, 199);
+  width: 20vw;
+  height: 100vh;
+  transition: transform 0.3s ease-in;
+}
+.sidebar nav {
+  padding: 32px;
+}
+.sidebar nav li {
+  list-style: none;
+  font-size: 20px;
+  padding: 33px 0px;
+}
+.sidebar nav li a {
+  text-decoration: none;
+  color: black;
+}
+
+.main {
+  /* background-color: yellow; */
+  width: 80vw;
+  padding: 23px;
+}
+.container {
+  display: flex;
+}
+.infoContainer {
+  /* background-color: green; */
+  height: 58vh;
+  width: 80vw;
+  margin: 147px auto;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap-reverse;
+}
+.devInfo {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-family: "Courier New", Courier, monospace;
+}
+.hello {
+  font-size: 70px;
+}
+.name {
+  font-size: 60px;
+  font-weight: bold;
+}
+.about {
+  font-size: 40px;
+}
+.moreabout {
+  font-size: 20px;
+  margin: 20px 0px;
+}
+.btn {
+  margin: 0 3px;
+  padding: 9px 14px;
+  background-color: dodgerblue;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 22px;
+  cursor: pointer;
+}
+.btn-sm {
+  font-size: 17px;
+}
+.buttons button:hover {
+  background-color: white;
+  color: dodgerblue;
+}
+
+.devPic {
+  display: flex;
+  align-items: center;
+}
+.devPic img {
+  height: 58vh;
+  border-radius: 20rem;
+}
+
+.hamburger{
+  position: absolute;
+  cursor: pointer;
+  top: 1vh;
+  left: 1vw;
+}
+.ham{
+  width: 23px;
+}
+.cross{
+  width: 23px;
+  margin-left: 13vw;
+  margin-top: 1vh;
+}
+.sidebarGo{
+    transform: translate(-100vw);
+    position: absolute;
+}
+
+@media (max-width: 1560px) {
+  .devPic{
+    display: none;
+  }
+}

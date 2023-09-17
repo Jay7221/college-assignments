@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="projects.css" />
+    <title>Jay Shirgupe</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hamburger">
+        <img src="ham.png" alt="Ham" class="ham" />
+        <img src="cross.png" alt="Cross" class="cross" />
+      </div>
+      <div class="sidebar sidebarGo">
+        <nav>
+          <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/intro.html">My Intro</a></li>
+            <li><a href="/projects.html">Projects</a></li>
+            <li><a href="/blog.html">Blog</a></li>
+            <li><a href="/contact.html">Contact</a></li>
+          </ul>
+        </nav>
+      </div>
+      <div class="main">
+        <div class="work-container">
+          <h1 class="project-heading">Projects</h1>
+          <div class="project-container">
+            <div class="project-card">
+              <img src="login.png" alt="Project" />
+              <h2 class="project-title">Idea Management Platform</h2>
+              <div class="pro-details">
+                <p>
+                  This was a project that we did for the Bridgestone Webathon
+                  which was a part of the COEP MindSpark22 megaevent. It's
+                  basically a web platform for people to put their ideas. We
+                  secured 2nd rank in the hackathon.
+                </p>
+                <div class="pro-btns">
+                  <NavLink to="{view}" class="btn"> VIEW </NavLink>
+                  <NavLink to="{source}" class="btn"> SOURCE </NavLink>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <img src="home.png" alt="Project" />
+              <h2 class="project-title">WCE Helper</h2>
+              <div class="pro-details">
+                <p>
+                  We did made this project as a part of the WCE-ACM hackathon
+                  2022, when in our first year. We used Django for backend. HTML
+                  and CSS for the frontend.
+                </p>
+                <div class="pro-btns">
+                  <NavLink to="{view}" class="btn"> VIEW </NavLink>
+                  <NavLink to="{source}" class="btn"> SOURCE </NavLink>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <img src="login.png" alt="Project" />
+              <h2 class="project-title">MERN Memories</h2>
+              <div class="pro-details">
+                <p>
+                  Made as a learning project, this is a full stack CRUD applications where you can make posts and view other's posts. It also has a authentication system implemented using JWT tokens.
+                </p>
+                <div class="pro-btns">
+                  <NavLink to="{view}" class="btn"> VIEW </NavLink>
+                  <NavLink to="{source}" class="btn"> SOURCE </NavLink>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      #searchInput {
+        padding: 10px;
+        width: 300px;
+        font-size: 16px;
+      }
+
+      #itemList {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      .list-item {
+        font-size: 18px;
+        margin: 5px;
+        display: block; /* Initially hide all list items */
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" id="searchInput" placeholder="Search for items" />
+    <ul id="itemList">
+      <li class="list-item">Apple</li>
+      <li class="list-item">Banana</li>
+      <li class="list-item">Cherry</li>
+      <li class="list-item">Date</li>
+      <li class="list-item">Grapes</li>
+      <li class="list-item">Lemon</li>
+      <li class="list-item">Mango</li>
+      <li class="list-item">Orange</li>
+      <li class="list-item">Peach</li>
+      <li class="list-item">Pear</li>
+    </ul>
+
+    <script>
+      const searchInput = document.getElementById("searchInput");
+      const itemList = document.getElementById("itemList");
+      const listItems = itemList.getElementsByClassName("list-item");
+
+      // Event listener for input changes
+      searchInput.addEventListener("input", function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        for (let i = 0; i < listItems.length; i++) {
+          const listItem = listItems[i];
+          const itemText = listItem.textContent.toLowerCase();
+
+          if (itemText.includes(searchTerm)) {
+            listItem.style.display = "block"; // Show matching items
+          } else {
+            listItem.style.display = "none"; // Hide non-matching items
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .container {
+    }
+    .red-circle {
+      background-color: red;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      top: 20%;
+      left: 44%;
+      position: absolute;
+    }
+    .green-circle {
+      background-color: green;
+      height: 200px;
+      width: 200px;
+      border-radius: 50%;
+      top: 20%;
+      left: 44%;
+      position: absolute;
+      z-index: -1;
+    }
+    .button{
+        background-color: gray;
+        padding: 1rem;
+        border-radius: 2rem;
+        position: absolute;
+        left: 47%;
+        top: 62%;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="red-circle"></div>
+      <div class="green-circle"></div>
+      <button class="button">Click Me</button>
+    </div>
+  </body>
+  <script>
+    const button = document.querySelector('button');
+    button.addEventListener('click', () => {
+        const red = document.getElementsByClassName('red-circle')[0];
+        console.log(red);
+        red.parentElement.removeChild(red);
+    });
+  </script>
+</html>

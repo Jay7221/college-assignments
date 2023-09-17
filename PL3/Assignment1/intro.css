@@ -1,0 +1,32 @@
+
+.main{
+    margin: 12px;
+    margin-top: 50px;
+    margin-left: 50px;
+}
+
+.skillContainer{
+    padding: 23px;
+}
+.skillItem{
+    display: flex;
+    align-items: center;
+    margin: 20px;
+}
+.skill{
+    width: 263px;
+    height: 23px;
+    background-color: red;
+}
+.full{
+    width: 265px;
+    background-color: blue;
+}
+.half{
+    width: 100px;
+    background-color: brown;
+}
+.quarter{
+    width: 70px;
+    background-color: red;
+}

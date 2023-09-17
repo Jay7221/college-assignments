@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Even Number Sum Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            background-color: #fff;
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+
+        .input-container {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+
+        p#result {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Even Number Sum Calculator</h1>
+        <div class="input-container">
+            <label for="numbers">Enter numbers (comma-separated):</label>
+            <input type="text" id="numbers" placeholder="e.g., 2, 4, 6, 8">
+        </div>
+        <button onclick="calculateSum()">Calculate Sum</button>
+        <p id="result">Result will be displayed here.</p>
+    </div>
+
+    <script>
+        function calculateSum() {
+            const inputElement = document.getElementById("numbers");
+            const resultElement = document.getElementById("result");
+
+            // Get user input and split it into an array
+            const input = inputElement.value;
+            const numbersArray = input.split(",").map(Number);
+
+            // Calculate the sum of even numbers
+            const evenSum = numbersArray.reduce((sum, num) => {
+                if (num % 2 === 0) {
+                    return sum + num;
+                }
+                return sum;
+            }, 0);
+
+            // Display the result
+            resultElement.textContent = `Sum of even numbers: ${evenSum}`;
+        }
+    </script>
+</body>
+</html>

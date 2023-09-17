@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    #input {
+      margin: 20px;
+      width: 20%;
+      padding: 20px;
+      border-radius: 20px;
+    }
+    #button {
+      background-color: rgb(214, 181, 110);
+      margin: 20px;
+      width: 20%;
+      padding: 20px;
+      border-radius: 20px;
+    }
+  </style>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container">
+      <input type="text" id="input" readonly />
+      <button type="button" id="button">Click Me</button>
+    </div>
+  </body>
+  <script>
+    const button = document.getElementById("button");
+    const input = document.getElementById("input");
+
+    const handleClick = () => {
+      input.value = "Hello World";
+    };
+
+    button.addEventListener("click", handleClick);
+  </script>
+</html>

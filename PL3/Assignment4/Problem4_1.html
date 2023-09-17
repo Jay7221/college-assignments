@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PS 1</title>
+  </head>
+  <style>
+    body {
+      display: flex;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      padding: 10px;
+      margin: 10px;
+    }
+    .container * {
+      margin: 10px;
+    }
+    input {
+      padding: 1rem;
+      border-radius: 2rem;
+    }
+    button {
+      padding: 1rem;
+      border-radius: 2rem;
+      background-color: gray;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="checkbox" />
+      <button id="checkme">Check Me</button>
+
+      <input type="text" id="first-name" />
+      <input type="text" id="last-name" />
+      <input type="text" id="full-name" />
+      <button id="create-full">Full Name</button>
+    </div>
+  </body>
+  <script>
+    const checkbox = document.getElementById("checkbox");
+    const checkme = document.getElementById("checkme");
+
+    checkme.addEventListener("click", () => {
+      checkbox.checked ^= 1;
+    });
+
+    const first_name = document.getElementById("first-name");
+    const last_name = document.getElementById("last-name");
+    const full_name = document.getElementById("full-name");
+    const create_full = document.getElementById("create-full");
+
+    create_full.addEventListener("click", () => {
+      full_name.value = first_name.value + " " + last_name.value;
+    });
+  </script>
+</html>

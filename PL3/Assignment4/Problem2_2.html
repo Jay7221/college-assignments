@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    body {
+      text-align: center;
+    }
+    #element {
+      width: 200px;
+      height: 200px;
+      color: white;
+      font-size: 30px;
+      border-radius: 50%;
+      margin: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: gray;
+    }
+  </style>
+  <body>
+    <div id="element">Hover Me</div>
+  </body>
+  <script>
+    const element = document.getElementById("element");
+
+    const changeText = (event) => {
+      if (event.type == "mouseover") {
+        element.innerText = "Thanks!";
+      } else {
+        element.innerText = "Hover Me";
+      }
+    };
+
+    element.addEventListener("mouseover", changeText);
+    element.addEventListener("mouseout", changeText);
+  </script>
+</html>

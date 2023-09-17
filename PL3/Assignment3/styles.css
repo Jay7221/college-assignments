@@ -1,0 +1,108 @@
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mobile-first styles */
+
+/* Header styles */
+header {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: relative;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+nav ul {
+    list-style-type: none;
+    padding: 0;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    z-index: 1;
+}
+.show{
+    display: none;
+}
+
+nav li {
+    display: block;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+}
+
+/* Hamburger menu styles */
+#menu-icon {
+    display: block;
+    cursor: pointer;
+}
+
+.bar {
+    width: 30px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px 0;
+}
+
+/* Featured and all books styles */
+#featured-books,
+#all-books {
+    margin: 20px;
+}
+
+.book {
+    display: inline-block;
+    margin: 10px;
+    text-align: center;
+    width: 45%;
+}
+
+.book img {
+    max-width: 100%;
+}
+
+/* Shopping cart styles */
+#cart {
+    text-align: center;
+    margin: 20px;
+}
+
+/* Media query for screens 768px and above (tablets and desktops) */
+@media screen and (min-width: 768px) {
+    header h1 {
+        font-size: 36px;
+    }
+
+    nav li {
+        display: inline;
+        margin-bottom: 0;
+    }
+
+    nav a {
+        font-size: 18px;
+    }
+
+    #menu-icon {
+        display: none;
+    }
+
+    .book {
+        width: 30%;
+    }
+}

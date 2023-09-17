@@ -1,0 +1,148 @@
+/* Reset some default styles */
+body, ul, li {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* Header styles */
+header {
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 36px;
+    color: #333;
+}
+
+header h2 {
+    font-size: 18px;
+    color: #666;
+}
+
+/* ... Previous CSS Code ... */
+
+/* Style the navigation menu buttons */
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 20px; /* Add padding to make the buttons more clickable */
+    background-color: #979191; /* Background color for buttons */
+    border-radius: 5px; /* Rounded corners for buttons */
+    transition: background-color 0.3s; /* Smooth hover effect */
+}
+
+nav a:hover {
+    background-color: #333; /* Background color on hover */
+    color: #fff; /* Text color on hover */
+}
+
+Navigation menu styles
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Main content styles */
+main {
+    padding: 20px;
+}
+
+/* Course outline styles */
+ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+/* Instructor card styles */
+.instructor {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    box-shadow: 2px 2px 5px #999;
+}
+
+/* Footer styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+}
+/* ... Previous CSS Code ... */
+
+/* Responsive design */
+@media screen and (max-width: 768px) {
+    /* Adjust header font size for smaller screens */
+    header h1 {
+        font-size: 24px;
+    }
+
+    /* Center align header text on smaller screens */
+    header {
+        text-align: center;
+    }
+
+    /* Adjust padding for main content on smaller screens */
+    main {
+        padding: 10px;
+    }
+
+    /* Make the navigation menu responsive */
+    nav ul {
+        text-align: center;
+        padding: 10px;
+    }
+
+    nav ul li {
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    /* Style for smaller screen instructor cards */
+    .instructor {
+        width: 100%;
+    }
+
+    /* Adjust footer text size for smaller screens */
+    footer {
+        font-size: 14px;
+    }
+}
+
+
+.module-name{
+    font-size: 30;
+    font-style: italic;
+    font-family: 'Courier New', Courier, monospace;
+}
+.course-outline{
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    border: 1px solid black;
+}

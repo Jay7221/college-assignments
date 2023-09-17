@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem 1</title>
+  </head>
+  <body>
+    <ul id="list">
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+      <li>OFF</li>
+    </ul>
+  </body>
+  <script>
+    const listItems = document.querySelectorAll("li");
+    const handleHover = (event) => {
+      if (event.type == "mouseover") {
+        return (event.target.innerText = "ON");
+      } else {
+        return (event.target.innerText = "OFF");
+      }
+    };
+    listItems.forEach((item) => {
+      item.addEventListener("mouseover", handleHover);
+      item.addEventListener("mouseout", handleHover);
+    });
+  </script>
+</html>

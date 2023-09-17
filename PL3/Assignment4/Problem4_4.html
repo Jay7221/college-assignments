@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem 4</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      width: 36%;
+      border-radius: 17%;
+      background-color: gray;
+      padding: 2rem;
+    }
+    .ballon {
+      height: 5rem;
+      width: 5rem;
+      border-radius: 50%;
+      background-color: red;
+      margin: 2rem;
+    }
+    button{
+        background-color: blue;
+        color: white;
+        padding: 1rem;
+        border-radius: 2rem;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <div class="ballon"></div>
+      <button>Refresh</button>
+    </div>
+  </body>
+  <script>
+    const ballons = document.getElementsByClassName("ballon");
+    for (let i = 0; i < ballons.length; ++i) {
+      let ballon = ballons[i];
+      ballon.addEventListener("mouseover", (event) => {
+        ballon.style.opacity = 0;
+      });
+    }
+    const refresh = document.querySelector("button");
+    refresh.addEventListener("click", () => {
+      for (let i = 0; i < ballons.length; ++i) {
+        let ballon = ballons[i];
+        ballon.style.opacity = 1;
+      }
+    });
+  </script>
+</html>

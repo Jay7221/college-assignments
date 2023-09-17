@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Problem 1</title>
+</head>
+<body>
+    <div id="wrapper">
+        <input type="text" value="OFF" readonly>
+        <button type="button">Click Me</button>
+    </div>
+</body>
+<script>
+    const wrapper = document.getElementById("wrapper");
+    const buttonElem = wrapper.querySelector("button");
+    const inputElem = wrapper.querySelector("input");
+
+    buttonElem.addEventListener('click', () => {
+        const oldText = inputElem.value;
+        return inputElem.value = oldText === "ON" ? "OFF" : "ON";
+    });
+</script>
+</html>

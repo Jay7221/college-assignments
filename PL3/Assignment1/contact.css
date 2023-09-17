@@ -1,0 +1,40 @@
+.contactform {
+  font-family: "Courier New", Courier, monospace;
+  padding: 0 34px;
+  padding-top: 200px;
+}
+.contactform h1 {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  text-align: center;
+  font-weight: 400;
+}
+.contactform form div {
+  padding: 10px 0px;
+  margin-left: 100px;
+}
+.contactform form div input {
+  padding: 10px 0px 0px 0px;
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  border-radius: 3px;
+}
+.form-check {
+  display: flex;
+  flex-direction: row;
+}
+#isClient {
+  width: 30px;
+}
+#emailHelp {
+  font-size: 12px;
+  color: rgb(29, 48, 61);
+}
+#nameHelp {
+  font-size: 12px;
+  color: rgb(29, 48, 61);
+}
+#enquiryHelp {
+  font-size: 12px;
+  color: rgb(29, 48, 61);
+}

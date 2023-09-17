@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Problem 5</title>
+  </head>
+  <style>
+    .container {
+      display: flex;
+    }
+    button {
+      position: absolute;
+      padding: 1rem;
+      border-radius: 2rem;
+      background-color: gray;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <button>Click Me</button>
+    </div>
+  </body>
+  <script>
+    const button = document.querySelector("button");
+    const speed = 2;
+
+    let move = false;
+
+    const moveLeft = () => {
+      if (!move) {
+        return;
+      }
+      button.style.left = button.offsetLeft + speed + "px";
+      setTimeout(() => {
+        moveLeft();
+      }, 100);
+    };
+
+    button.addEventListener("click", () => {
+      move ^= 1;
+      moveLeft();
+    });
+  </script>
+</html>
