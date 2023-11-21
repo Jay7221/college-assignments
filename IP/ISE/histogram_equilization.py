@@ -74,3 +74,5 @@ image_path = 'flower.webp'
 
 # Perform histogram equalization and display the results
 histogram_equalization(image_path)
+
+
