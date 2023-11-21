@@ -24,49 +24,49 @@ vector<pair<int, int>> mergeSkyline(vector<Building>& buildings, int left, int r
     vector<pair<int, int>> leftSkyline = mergeSkyline(buildings, left, mid);
     vector<pair<int, int>> rightSkyline = mergeSkyline(buildings, mid + 1, right);
     
-    int i = 0, j = 0, h1 = 0, h2 = 0;
+    int i = 0, j = 0, h_left = 0, h_right = 0;
     vector<pair<int, int>> mergedSkyline;
-    vector<Building> cur;
-    for(int i = left; i <= right; ++i){
-        cur.push_back(buildings[i]);
-    }
-    cerr << "Buildings : " << cur << '\n';
-    cerr << "Left Skyline : " << leftSkyline << '\n';
-    cerr << "Right Skyline : " << rightSkyline << '\n';
-    cerr << "\n-----------------------\n\n";
     
-    while (i < leftSkyline.size() && j < rightSkyline.size()) {
-        int x;
-        int h;
-        if (leftSkyline[i].first < rightSkyline[j].first) {
-            x = leftSkyline[i].first;
-            h = leftSkyline[i].second;
-            i++;
-        } else if (leftSkyline[i].first > rightSkyline[j].first) {
-            x = rightSkyline[j].first;
-            h = rightSkyline[j].second;
-            j++;
-        } else {
-            x = leftSkyline[i].first;
-            h = max(leftSkyline[i].second, rightSkyline[j].second);
-            i++;
-            j++;
-        }
-        
-        if (mergedSkyline.empty() || h != mergedSkyline.back().second) {
-            mergedSkyline.push_back({x, h});
-        }
+  while (i < leftSkyline.size() && j < rightSkyline.size()) {
+    int x;
+    if(leftSkyline[i].first < rightSkyline[j].first){
+      tie(x, h_left) = leftSkyline[i];
+      ++i;
     }
+    else if(leftSkyline[i].first > rightSkyline[j].first){
+      tie(x, h_right) = rightSkyline[j];
+      ++j;
+    }
+    else{
+      tie(x, h_left) = leftSkyline[i];
+      tie(x, h_right) = rightSkyline[j];
+      ++i;
+      ++j;
+    }
+    int h = max(h_left, h_right);
+    if(mergedSkyline.empty() || mergedSkyline.back().second != h){
+      mergedSkyline.push_back({x, h});
+    }
+  }
     
     while (i < leftSkyline.size()) {
+      if (mergedSkyline.empty() || leftSkyline[i].second != mergedSkyline.back().second) {
         mergedSkyline.push_back(leftSkyline[i]);
+      }
         i++;
     }
     
     while (j < rightSkyline.size()) {
+      if (mergedSkyline.empty() || rightSkyline[i].second != mergedSkyline.back().second) {
         mergedSkyline.push_back(rightSkyline[j]);
+      }
         j++;
     }
+
+    cerr << "Left Skyline : " << leftSkyline << '\n';
+    cerr << "Right Skyline : " << rightSkyline << '\n';
+    cerr << "Merged Skyline : " << mergedSkyline << '\n';
+    cerr << "\n-----------------------\n\n";
     
     return mergedSkyline;
 }
