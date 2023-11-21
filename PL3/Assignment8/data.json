@@ -1,0 +1,47 @@
+[
+    {
+        "_id": 1,
+        "firstName": "Candice",
+        "lastName": "Mark",
+        "age": 22,
+        "projectMarks": 99,
+        "examsMarks": 70,
+        "assignmentMarks": 10,
+        "status": [
+            {
+                "course": "Python",
+                "batch": 2023
+            }
+        ]
+    },
+    {
+        "_id": 2,
+        "firstName": "Dave",
+        "lastName": "James",
+        "age": 21,
+        "projectMarks": 99,
+        "examsMarks": 70,
+        "assignmentMarks": 10,
+        "status": [
+            {
+                "course": "MongoDB",
+                "batch": 2023
+            }
+        ]
+    },
+    {
+        "_id": 3,
+        "firstName": "Ivan",
+        "lastName": "Seth",
+        "age": 24,
+        "projectMarks": 99,
+        "examsMarks": 70,
+        "assignmentMarks": 10,
+        "status": [
+            {
+                "course": "Java",
+                "batch": 2022
+            }
+        ]
+    }
+]

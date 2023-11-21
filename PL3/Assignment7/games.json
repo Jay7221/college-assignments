@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Valorant",
+        "genre": "Combat",
+        "rating": 97
+    },
+    {
+        "name": "CS Go",
+        "genre": "Combat",
+        "rating": 95
+    },
+    {
+        "name": "SubWay Surfer",
+        "genre": "Runner",
+        "rating": 88,
+    },
+    {
+        "name": "Clash of Clans",
+        "genre": "Strategy",
+        "rating": 89,
+    },
+    {
+        "name": "Dr Driving",
+        "genre": "Simulation",
+        "rating": 99,
+    }
+]

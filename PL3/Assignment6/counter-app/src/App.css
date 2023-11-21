@@ -1,0 +1,25 @@
+.App{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+button {
+  height: 4rem;
+  width: 7rem;
+  font-size: 2rem;
+  margin: 1rem ;
+}
+.increment {
+  background-color: blue;
+  color: white;
+  height: 4rem;
+  width: 7rem;
+  text-align: center;
+}
+.decrement {
+  background-color: red;
+  color: white;
+}
+.number {
+  background-color: yellow;
+}
