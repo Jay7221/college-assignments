@@ -3,7 +3,7 @@ const app = express();
 
 const MongoClient = require('mongodb').MongoClient;
 
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3009;
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
