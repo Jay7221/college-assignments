@@ -6,8 +6,22 @@ from chat_utils import get_response
 
 # app config
 st.set_page_config(page_title="AgroHelp", page_icon="vector-grapes-icon.jpg")
+col1, col2 = st.columns([5, 1])
+col2.image('vector-grapes-icon2.jpg')
 st.title("AgroHelp")
-init_sidebar()
+
+page_element = """
+<style>
+[data-testid="stAppViewContainer"]{
+  background-image: url("Agrohelp.jpg");
+  background-size: cover;
+}
+</style>
+"""
+
+st.markdown(page_element, unsafe_allow_html=True)
+
+
 st.markdown(
     r"""
     <style>
@@ -17,6 +31,7 @@ st.markdown(
     </style>
     """, unsafe_allow_html=True
 )
+init_sidebar()
 
 # session state
 if "chat_history" not in st.session_state:

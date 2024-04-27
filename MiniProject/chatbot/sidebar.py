@@ -24,7 +24,11 @@ def init_sidebar():
     grape_species = [
         "None planted",
         "Thompson Seedless",
-        "Red Globe"
+        "Red Globe",
+        "Manjri Naveen",
+        "Fantasy Seedless",
+        "Flame Seedless",
+        "Sharad Seedless"
     ]
     st.sidebar.title("User Settings")
 
