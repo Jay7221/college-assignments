@@ -18,18 +18,32 @@ def get_response(user_query, chat_history):
     context = '\n---\n'.join([doc.page_content for doc in relevant_chunks])
     farm_details = f"""location:{st.session_state.location}\ngrape variety:{st.session_state.grape_species}"""
     relevant_chunks.extend(get_context(farm_details, 2))
+    disease_risks = str(st.session_state.risk_levels)
 
     template = """
-    You are a helpful farm assistant. Answer the following questions considering the history of the conversation and the context provided. If the answer is not derivable from chat history, context and farm details, respond with "No records regarding query found":
+    You are a helpful farm assistant. Answer the following questions considering the history of the conversation and the context provided. If the answer is not derivable from chat history, context and farm details, respond with "No records regarding query found". Don't respond with lists or data structures, always summarize them:
 
     Chat history: {chat_history}
 
     User question: {user_question}
 
+    Disease Risks For next 7 days: {disease_risks}
+
     Farm Details: {farm_details}
 
     Context: {context}
     """
+    # template = """
+    # You are a helpful farm assistant. Answer the following questions considering the history of the conversation and the context provided. If you can't get the answer make one up:
+
+    # Chat history: {chat_history}
+
+    # User question: {user_question}
+
+    # Farm Details: {farm_details}
+
+    # Context: {context}
+    # """
 
     prompt = ChatPromptTemplate.from_template(template)
 
@@ -44,5 +58,6 @@ def get_response(user_query, chat_history):
         "chat_history": chat_history,
         "user_question": user_query,
         "context": context,
-        "farm_details": farm_details
+        "farm_details": farm_details,
+        "disease_risks": disease_risks
     })

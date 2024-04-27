@@ -69,10 +69,15 @@ def disease_predictions():
     powdery_mildew_res = list(
         powdery_mildew_classfier.predict(X.loc[ind: ind + 7]))
 
+    anthracnose_classfier = pickle.load(
+        open('../models/anthracnose_classifier.sav', 'rb'))
+    anthracnose_res = list(
+        anthracnose_classfier.predict(X.loc[ind: ind + 7]))
+
     res_dict = {
         'Downy Mildew': [],
         'Powdery Mildew': [],
-        # 'Anthracnose Mildew': [],
+        'Anthracnose': [],
     }
     for i in range(7):
         cur = datetime.now()
@@ -82,4 +87,6 @@ def disease_predictions():
         # res_dict['date'].append(date.strftime("%Y-%m-%d"))
         res_dict['Downy Mildew'].append(downy_mildew_res[i])
         res_dict['Powdery Mildew'].append(powdery_mildew_res[i])
+        res_dict['Anthracnose'].append(anthracnose_res[i])
+    st.session_state.risk_levels = str(res_dict)
     return pd.DataFrame(res_dict)
