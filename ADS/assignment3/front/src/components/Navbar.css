@@ -1,0 +1,20 @@
+/* Navbar container */
+nav {
+  background-color: #333; /* Dark background color */
+  padding: 10px; /* Add some padding around the navbar */
+}
+
+/* Navbar list */
+ul {
+  list-style-type: none; /* Remove default list style */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Display list items horizontally */
+  justify-content: space-around; /* Distribute list items evenly */
+}
+
+a {
+  color: white;
+  font-style: none;
+  font-weight: 20;
+}

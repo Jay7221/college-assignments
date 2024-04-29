@@ -1,0 +1,82 @@
+/* Classroom.css */
+.classroom-container {
+  text-align: center;
+}
+
+.classroom-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.classroom-form label {
+  margin-bottom: 10px;
+}
+
+.classroom-form input {
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Adjusted alignment for the form elements */
+.classroom-form label,
+.classroom-form input {
+  width: 100%;
+}
+
+/* Improved styling for the buttons */
+.classroom-form button {
+  padding: 10px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.classroom-form button:hover {
+  background-color: #45a049;
+}
+
+/* Table and button styling */
+.classroom-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.classroom-table th,
+.classroom-table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.classroom-table th {
+  background-color: #f2f2f2;
+}
+
+/* Updated button styles in the table */
+.classroom-table button {
+  padding: 8px;
+  background-color: #4caf50;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.classroom-table button:hover {
+  background-color: #45a049;
+}

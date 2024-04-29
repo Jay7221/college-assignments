@@ -1,0 +1,58 @@
+/* Courses.css */
+.courses-container {
+  margin: 20px;
+}
+
+.courses-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.courses-form label {
+  margin-bottom: 10px;
+}
+
+.courses-form input {
+  padding: 5px;
+  margin-top: 5px;
+}
+
+.courses-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.courses-table th,
+.courses-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.courses-table th {
+  background-color: #f2f2f2;
+}
+
+.courses-table td {
+  cursor: pointer;
+}
+
+.courses-table button {
+  margin-right: 5px;
+  padding: 5px;
+  cursor: pointer;
+}
+
+.courses-table button:nth-child(2) {
+  background-color: #4caf50; /* Green */
+  color: white;
+  border: none;
+}
+
+.courses-table button:nth-child(3) {
+  background-color: #f44336; /* Red */
+  color: white;
+  border: none;
+}
